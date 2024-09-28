@@ -1,64 +1,26 @@
 # Shamir's Secret Sharing Algorithm
 
 ## Overview
-This project implements a simplified version of Shamir's Secret Sharing algorithm using Lagrange interpolation to find the constant term of an unknown polynomial based on given roots.
-
-## Features
-- Reads input from JSON files containing roots of the polynomial.
-- Decodes y-values from different bases.
-- Calculates the constant term of the polynomial using Lagrange interpolation.
-
-## Requirements
-- Java JDK (version 8 or higher)
-- [Gson library](https://github.com/google/gson) for JSON parsing
+This project is a basic implementation of Shamir's Secret Sharing algorithm. It uses Lagrange interpolation to reconstruct a secret from shared parts provided in JSON files.
 
 ## Project Structure
-```
-/secret-sharing
-│
-├── /src
-│   ├── SecretSharing.java
-│
-├── /testcases
-│   ├── testcase1.json
-│   ├── testcase2.json
-│
-├── /lib
-│   ├── gson-2.8.8.jar (or your Gson version)
-│
-└── README.md
-```
+- `src/SecretSharing.java`: Main Java program that processes the data.
+- `testcases/testcase1.json`: First example test case.
+- `testcases/testcase2.json`: Second example test case.
+- `lib/gson-2.8.8.jar`: Gson library needed for parsing JSON files.
 
-## Getting Started
+## How It Works
+1. The program reads input from JSON files, which contain data points for a polynomial.
+2. It decodes the data and applies Lagrange interpolation to find the constant term, which is the secret.
+3. The result is printed as the output.
 
-1. **Clone the repository**:
-   ```bash
-   git clone <repository-url>
-   cd secret-sharing
-   ```
+## Test Case Format
+Each test case contains:
+- `n`: Total number of points.
+- `k`: Minimum points needed to reconstruct the secret.
+- The x and y values of the points, where y is encoded in a specified base.
 
-2. **Add the Gson library**:
-   Ensure the Gson library (`gson-2.8.8.jar`) is included in your project. If you're using VS Code, you can add it to the build path.
+## Output
+The program will print the secret (constant term) calculated from each test case.
 
-3. **Compile the Java code**:
-   Navigate to the `src` directory and compile the Java code:
-   ```bash
-   javac -cp "../lib/gson-2.8.8.jar" SecretSharing.java
-   ```
-
-4. **Run the application**:
-   Execute the program with the Gson library in the classpath:
-   ```bash
-   java -cp ".;../lib/gson-2.8.8.jar" SecretSharing
-   ```
-
-## Test Cases
-The project includes two JSON test case files located in the `/testcases` directory:
-- `testcase1.json`
-- `testcase2.json`
-
-These files contain the roots of the polynomial in a specific format for testing the algorithm.
-
-## Results
-The program will output the constant term \( c \) for each test case provided.
-![{C5690B5D-BD74-4C25-9CE9-043BA43C39B4}](https://github.com/user-attachments/assets/0cb0b103-04c8-4102-974f-1c320ce15eb0)
+![image](https://github.com/user-attachments/assets/b515dc17-44db-47dc-b1ab-f20f4c4fe562)
